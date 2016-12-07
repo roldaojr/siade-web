@@ -1,0 +1,15 @@
+<md-toolbar layout="row" layout-align="space-between center">
+    <fw-back-button></fw-back-button>
+    <h2 class="md-toolbar-tools">
+        {{ $ctrl.bairro.id ? 'Editar' : 'Adicionar' }} Bairro
+    </h2>
+    <md-button ng-click="$ctrl.salvar()">Salvar</md-button>
+</md-toolbar>
+<div layout="column" layout-padding>
+    <md-content>
+        <md-input-container class="md-block">
+            <label>Nome</label>
+            <input ng-model="$ctrl.bairro.nome" type="text">
+        </md-input-container>
+    </md-content>
+</div>

@@ -1,0 +1,33 @@
+<md-toolbar layout="row" layout-align="space-between center">
+    <fw-back-button></fw-back-button>
+    <div class="md-toolbar-tools">
+        <div flex-xs flex-sm></div>
+        <h2>Iniciar ciclo</h2>
+        <div flex></div>
+    </div>
+    <md-button ng-click="$ctrl.salvar()">Salvar</md-button>
+</md-toolbar>
+<div layout="column" layout-padding>
+    <md-content>
+        <md-input-container class="md-block">
+            <label>Data inicio</label>
+            <input ng-model="$ctrl.ciclo.data_inicio" type="date">
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Data termino</label>
+            <input ng-model="$ctrl.ciclo.data_inicio" type="date">
+        </md-input-container>
+        <md-input-container>
+            <label>Atividade</label>
+            <md-select ng-model="$ctrl.ciclo.atividade">
+                <md-option ng-value="1">Levantamento de indice (LI)</md-option>
+                <md-option ng-value="2">Tratamento (T)</md-option>
+                <md-option ng-value="3">Levantamento de indice + Tratamento (LI+T)</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Ano base</label>
+            <input ng-model="$ctrl.ciclo.ano_base" type="number" step="1">
+        </md-input-container>
+    </md-content>
+</div>

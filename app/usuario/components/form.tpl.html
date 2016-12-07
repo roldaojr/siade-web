@@ -1,0 +1,32 @@
+<form ng-submit="$ctrl.salvar()">
+    <md-toolbar layout="row" layout-align="space-between center">
+        <fw-back-button></fw-back-button>
+        <h2 class="md-toolbar-tools">
+            {{ $ctrl.usuario.id ? 'Editar' : 'Adicionar' }} Agente
+        </h2>
+        <md-button type="submit">Salvar</md-button>
+    </md-toolbar>
+    <div layout="column" layout-padding>
+        <md-content>
+            <md-input-container class="md-block">
+                <label>Nome</label>
+                <input type="text" required ng-model="$ctrl.usuario.nome" type="text">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>CPF</label>
+                <input type="text" required ng-model="$ctrl.usuario.username" type="text">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>E-mail</label>
+                <input type="email" ng-model="$ctrl.usuario.email" type="email">
+            </md-input-container>
+            <md-input-container>
+                <label>Tipo</label>
+                <md-select required ng-model="$ctrl.usuario.tipo">
+                    <md-option ng-value="0">Agente de campo</md-option>
+                    <md-option ng-value="1">Supervisor</md-option>
+                </md-select>
+            </md-input-container>
+        </md-content>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+<div class="layout-row flex" flex layout="row">
+    <md-sidenav class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')"
+                md-component-id="left" md-whiteframe="4" layout="column">
+        <md-toolbar layout-align="center center">
+            <h2>SIADE</h2>
+        </md-toolbar>
+        <md-content layout="column">
+            <md-sidemenu>
+                <md-sidemenu-content md-heading="{{ $ctrl.currentUser.nome }}" md-arrow="true">
+                    <md-sidemenu-button ui-sref="logout">Sair</md-sidemenu-button>
+                </md-sidemenu-content>
+                <md-divider></md-divider>
+                <md-sidemenu-content md-heading="Gerenciamento de Ciclo" md-arrow="true">
+                    <md-sidemenu-button ui-sref="ciclo.detalhes">Ciclo atual</md-sidemenu-button>
+                    <md-sidemenu-button ui-sref="ciclo.anteriores">Ciclos anteriores</md-sidemenu-button>
+                </md-sidemenu-content>
+                <md-sidemenu-content md-heading="Imóveis e Localidades" md-arrow="true">
+                    <md-sidemenu-button ui-sref="quadra.listar">Quadras e Imóveis</md-sidemenu-button>
+                    <md-sidemenu-button ui-sref="logradouro.listar">Logradouros</md-sidemenu-button>
+                    <md-sidemenu-button ui-sref="bairro.listar">Bairros</md-sidemenu-button>
+                </md-sidemenu-content>
+                <md-sidemenu-content md-heading="Relatórios" md-arrow="true">
+                    <md-sidemenu-button ui-sref="relatorio.diario">Diário</md-sidemenu-button>
+                    <md-sidemenu-button ui-sref="relatorio.semanal">Semanal</md-sidemenu-button>
+                </md-sidemenu-content>
+                <md-sidemenu-button ui-sref="usuario.listar">Agentes</md-sidemenu-button>
+            </md-sidemenu>
+        </md-content>
+    </md-sidenav>
+    <md-content layout="column" flex id="content">
+        <ui-view></ui-view>
+    </md-content>
+</div>

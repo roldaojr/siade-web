@@ -1,0 +1,42 @@
+<md-toolbar layout="row" layout-wrap layout-align="space-between center">
+    <div flex-xs flex-order-xs="1" layout="row" layout-align="space-between center">
+        <fw-back-button></fw-back-button>
+        <div class="md-toolbar-tools">
+            <h1>Selecionar quadras</h3>
+        </div>
+    </div>
+    <div flex-xs="grow" flex-order-xs="3">
+        <md-input-container class="md-block" ng-show="$ctrl.bairros">
+            <md-select class="md-no-underline" ng-model="$ctrl.bairro" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Bairro" ng-change="$ctrl.mudarBairro()">
+                <md-option ng-repeat="bairro in $ctrl.bairros" ng-value="bairro">
+                    {{ bairro.nome }}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex="none" flex-order-xs="2">
+        <md-button ng-click="$ctrl.concluir()">Concluir</md-button>
+    </div>
+</md-toolbar>
+<md-content class="md-padding" cg-busy="$ctrl.asyncLoad">
+    <div layout-xs="column" layout="row" layout-wrap>
+        <div flex="25" flex-sm="33" flex-xs="100" ng-repeat="quadra in $ctrl.quadras">
+            <md-card>
+                <md-card-title layout="row" layout-align="space-between center">
+                    <span>Quadra {{ quadra.numero }}</span>
+                    <md-checkbox style="margin-bottom: 0px" aria-label="Selecionar quadra"  ng-checked="$ctrl.quadraSelecionada(quadra)" ng-click="$ctrl.selecionarQuadra(quadra)"></md-checkbox>
+                </md-card-title>
+                <md-card-content>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Lados</div>
+                        <div class="md-secondary">{{ quadra.total_lados || 0 }}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Imóveis</div>
+                        <div class="md-secondary">{{ quadra.total_imoveis || 0 }} </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</md-content>

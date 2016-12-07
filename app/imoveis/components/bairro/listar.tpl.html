@@ -1,0 +1,12 @@
+<md-toolbar layout="row" layout-align="space-between center">
+    <fw-menu-button target="left"></fw-menu-button>
+    <h2 class="md-toolbar-tools">Bairros</h2>
+    <md-button ui-sref="bairro.adicionar">Adicionar</md-button>
+</md-toolbar>
+<md-content layout="column" cg-busy="bairrosPromise">
+    <md-list>
+        <md-list-item ui-sref="bairro.editar({bairroId: bairro.id})" ng-repeat="bairro in bairros">
+            {{ bairro.nome }}
+        </md-list-item>
+    </md-list>
+</md-content>

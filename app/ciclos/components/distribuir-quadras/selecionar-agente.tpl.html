@@ -1,0 +1,11 @@
+<md-toolbar layout="row" layout-align="space-between center">
+    <fw-back-button></fw-back-button>
+    <h2 class="md-toolbar-tools">Selecionar agente</h2>
+</md-toolbar>
+<md-content layout="column" cg-busy="[$ctrl.agentesAsync,$ctrl.trabalhoAsync]">
+    <md-list>
+        <md-list-item ng-click="$ctrl.selecionarAgente(agente)" ng-repeat="agente in $ctrl.agentes">
+            {{ agente.nome }}
+        </md-list-item>
+    </md-list>
+</md-content>

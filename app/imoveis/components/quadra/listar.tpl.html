@@ -1,0 +1,46 @@
+<md-toolbar layout="row" layout-wrap layout-align="space-between center">
+    <div flex-xs flex-order-xs="1" layout="row" layout-align="start center">
+        <fw-menu-button target="left"></fw-menu-button>
+        <h1 class="md-toolbar-tools">Quadras</h3>
+    </div>
+    <div flex-xs="grow" flex-order-xs="3">
+        <md-input-container class="md-block" ng-show="$ctrl.bairros">
+            <md-select class="md-no-underline" ng-model="$ctrl.bairroSel" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Bairro" ng-change="$ctrl.mudarBairro()">
+                <md-option ng-repeat="bairro in $ctrl.bairros" ng-value="bairro">
+                    {{ bairro.nome }}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex-order-xs="2">
+        <md-button ui-sref="quadra.adicionar({bairroId:$ctrl.bairro.id})">Adicionar</md-button>
+    </div>
+</md-toolbar>
+<md-content class="md-padding" cg-busy="[bairrosPromise,quadrasPromise]">
+    <div layout-xs="column" layout="row" layout-wrap>
+        <div flex="33" flex-xs="100" ng-repeat="quadra in $ctrl.quadras">
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Quadra {{ quadra.numero }}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Lados</div>
+                        <div class="md-secondary">{{ quadra.total_lados || 0 }}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Imóveis</div>
+                        <div class="md-secondary">{{ quadra.total_imoveis || 0 }} </div>
+                    </div>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ui-sref="imovel.listar({quadraId: quadra.id})" ng-disabled="!quadra.total_lados">Imóveis</md-button>
+                    <md-button ui-sref="quadra.editar({quadraId: quadra.id})">Editar</md-button>
+                    <md-button ng-click="$ctrl.excluirQuadra($event, quadra)">Excluir</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+</md-content>

@@ -1,0 +1,49 @@
+<md-toolbar layout="row" layout-wrap layout-align="space-between center">
+    <div flex-xs flex-order-xs="1" layout="row" layout-align="start center">
+        <fw-back-button target="left"></fw-back-button>
+        <h1 class="md-toolbar-tools">Imóveis</h3>
+    </div>
+    <div flex-xs="grow" flex-order-xs="3">
+        <md-input-container class="md-block" ng-show="$ctrl.lados">
+            <md-select class="md-no-underline" ng-model="$ctrl.ladoSel" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Lado" ng-change="$ctrl.mudarLado()">
+                <md-option ng-repeat="lado in $ctrl.lados" ng-value="lado">
+                    Lado {{ lado.numero }}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex-order-xs="2">
+        <md-button ui-sref="imovel.adicionar({lado:$ctrl.lado})">Adicionar</md-button>
+    </div>
+</md-toolbar>
+<md-content class="md-padding" cg-busy="[ladosPromise,imoveisPromise]">
+    <div layout-xs="column" layout="row" layout-wrap>
+        <div flex="33" flex-xs="100" ng-repeat="imovel in $ctrl.imoveis">
+            <md-card>
+                <md-card-content>
+                    <div layout="row" layout-align="space-between center">
+                        <span>{{ imovel.ordem }}</span>
+                        <span>{{ $ctrl.getTipoDisplay(imovel.tipo) }} </span>
+                        <span class="md-headline">Nº {{ imovel.numero }}</span>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Habitantes</div>
+                        <div class="md-secondary">{{ imovel.habitantes }}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Cães</div>
+                        <div class="md-secondary">{{ imovel.caes }}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                        <div>Gatos</div>
+                        <div class="md-secondary">{{ imovel.gatos }}</div>
+                    </div>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ui-sref="imovel.editar({imovelId: imovel.id})">Editar</md-button>
+                    <md-button ng-click="$ctrl.excluirImovel($event, imovel)">Excluir</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+</md-content>

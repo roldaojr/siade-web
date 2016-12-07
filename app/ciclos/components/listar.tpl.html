@@ -1,0 +1,11 @@
+<md-toolbar layout="row" layout-align="space-between center">
+    <fw-menu-button target="left"></fw-menu-button>
+    <h2 class="md-toolbar-tools">Ciclos Anteriores</h2>
+</md-toolbar>
+<md-content layout="column" cg-busy="ciclosPromise">
+    <md-list>
+        <md-list-item ui-sref="ciclo.detalhes({cicloId: ciclo.id})" ng-repeat="ciclo in ciclos">
+            {{ ciclo.numero }} / {{ ciclo.ano_base }}
+        </md-list-item>
+    </md-list>
+</md-content>
