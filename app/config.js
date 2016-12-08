@@ -22,6 +22,7 @@ System.config({
         "parse": "../node_modules/parse/dist/parse.js",
         "angular-parse": "../node_modules/angular-parse/src/index.js",
         "angular-ui-router": "../node_modules/angular-ui-router/release/angular-ui-router.js",
+        "angular-ui-validate": "../node_modules//angular-ui-validate/dist/validate.js",
         "angular-material-sidemenu": "../node_modules/angular-material-sidemenu/index.js",
         "angular-busy2": "../node_modules/angular-busy2/dist/angular-busy.js"
     },

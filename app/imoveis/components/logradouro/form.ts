@@ -1,11 +1,13 @@
 
 class LogradouroFormCtrl {
-    public logradouro;
+    public logradouro
+    public form
 
     constructor() {
     }
 
     salvar() {
+        if(this.form.$invalid) return
         this.logradouro.save().then(r => {
             history.back()
         })

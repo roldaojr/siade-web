@@ -1,45 +1,62 @@
-<md-toolbar layout="row" layout-align="space-between center">
-    <fw-back-button></fw-back-button>
-    <h2 class="md-toolbar-tools">
-        {{ $ctrl.imovel.id ? 'Editar' : 'Adicionar' }} Imóvel
-    </h2>
-    <md-button ng-click="$ctrl.salvar()">Salvar</md-button>
-</md-toolbar>
-<div layout="column" layout-padding>
-    <md-content>
-        <md-input-container class="md-block">
-            <label>Ordem</label>
-            <input ng-model="$ctrl.imovel.ordem" type="number" step="1">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label>Numero</label>
-            <input ng-model="$ctrl.imovel.numero" type="text">
-        </md-input-container>
-        <md-input-container>
-            <label>Tipo</label>
-            <md-select ng-model="$ctrl.imovel.tipo">
-                <md-option ng-value="1">Residência</md-option>
-                <md-option ng-value="2">Comércio</md-option>
-                <md-option ng-value="3">Terreno Baldio</md-option>
-                <md-option ng-value="4">Outros</md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label>Qtd. Habitantes</label>
-            <input ng-model="$ctrl.imovel.habitantes" type="number" step="1">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label>Qtd. Cães</label>
-            <input ng-model="$ctrl.imovel.caes" type="number" step="1">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label>Qtd. Gatos</label>
-            <input ng-model="$ctrl.imovel.gatos" type="number" step="1">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <md-checkbox ng-model="$ctrl.imovel.ponto_estrategico">
-                Ponto estratégico
-            </md-checkbox>
-        </md-input-container>
-    </md-content>
-</div>
+<form name="$ctrl.form" novalidate ng-submit="$ctrl.salvar()">
+    <md-toolbar layout="row" layout-align="space-between center">
+        <fw-back-button></fw-back-button>
+        <h2 class="md-toolbar-tools">
+            {{ $ctrl.imovel.id ? 'Editar' : 'Adicionar' }} Imóvel
+        </h2>
+        <md-button type="submit">Salvar</md-button>
+    </md-toolbar>
+    <div layout="column" layout-padding>
+        <md-content layout="column">
+            <md-input-container class="md-block">
+                <label>Ordem</label>
+                <input name="ordem" type="number" step="1" ng-model="$ctrl.imovel.ordem">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Numero</label>
+                <input name="numero" required type="text" ng-model="$ctrl.imovel.numero">
+                <div ng-messages="$ctrl.form.numero.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Tipo</label>
+                <md-select name="tipo" required ng-model="$ctrl.imovel.tipo">
+                    <md-option ng-value="1">Residência</md-option>
+                    <md-option ng-value="2">Comércio</md-option>
+                    <md-option ng-value="3">Terreno Baldio</md-option>
+                    <md-option ng-value="4">Outros</md-option>
+                </md-select>
+                <div ng-messages="$ctrl.form.tipo.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Qtd. Habitantes</label>
+                <input name="habitantes" required type="number" step="1" ng-model="$ctrl.imovel.habitantes">
+                <div ng-messages="$ctrl.form.habitantes.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Qtd. Cães</label>
+                <input name="caes" required type="number" step="1" ng-model="$ctrl.imovel.caes">
+                <div ng-messages="$ctrl.form.caes.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Qtd. Gatos</label>
+                <input name="gatos" required type="number" step="1" ng-model="$ctrl.imovel.gatos">
+                <div ng-messages="$ctrl.form.gatos.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <md-checkbox  name="ponto_estrategico" ng-model="$ctrl.imovel.ponto_estrategico">
+                    Ponto estratégico
+                </md-checkbox>
+            </md-input-container>
+        </md-content>
+    </div>
+</form>

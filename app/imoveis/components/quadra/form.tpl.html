@@ -1,29 +1,38 @@
-<md-toolbar layout="row" layout-align="space-between center">
-    <fw-back-button></fw-back-button>
-    <h2 class="md-toolbar-tools">
-        {{ $ctrl.quadra.id ? 'Editar' : 'Adicionar' }} Quadra
-    </h2>
-    <md-button ng-click="$ctrl.salvar()">Salvar</md-button>
-</md-toolbar>
-<md-content layout="column" layout-padding>
-    <md-input-container class="md-block">
-        <label>Numero</label>
-        <input ng-model="$ctrl.quadra.numero" type="text">
-    </md-input-container>
-    <div layout="row" ng-repeat="lado in $ctrl.lados">
-        <md-input-container flex="33">
-            <label>Numero</label>
-            <input ng-model="lado.numero" type="number" step="1">
-        </md-input-container>
-        <md-autocomplete
-            md-selected-item="lado.logradouro"
-            md-search-text="lado.searchText"
-            md-items="item in $ctrl.pesquisarLogradouro(lado.searchText)"
-            md-item-text="item.nome"
-            md-require-match
-            md-floating-label="Logradouro">
-            <span md-highlight-text="lado.searchText">{{ item.nome }}</span>
-        </md-autocomplete>
+<form name="$ctrl.form" novalidate ng-submit="$ctrl.salvar()">
+    <md-toolbar layout="row" layout-align="space-between center">
+        <fw-back-button></fw-back-button>
+        <h2 class="md-toolbar-tools">
+            {{ $ctrl.quadra.id ? 'Editar' : 'Adicionar' }} Quadra
+        </h2>
+        <md-button type="submit">Salvar</md-button>
+    </md-toolbar>
+    <div layout="column" layout-padding>
+        <md-content layout="column">
+            <md-input-container class="md-block">
+                <label>Numero</label>
+                <input name="numero" ng-model="$ctrl.quadra.numero" required type="text">
+            </md-input-container>
+            <div layout="row" ng-repeat="lado in $ctrl.lados">
+                <md-input-container flex="33">
+                    <label>Numero</label>
+                    <input name="lado_{{$index}}_numero" ng-model="lado.numero" type="number" required step="1" min="1" ui-validate="{unique: '$ctrl.validar_lado($value, lado)'}">
+                    <div ng-messages="$ctrl.form['lado_'+$index+'_numero'].$error" role="alert">
+                        <div ng-message="required">Número obrigatório</div>
+                        <div ng-message="min">O valor mínimo é 1</div>
+                        <div ng-message="unique">Não pode haver dois lados com mesmo numero</div>
+                    </div>
+                </md-input-container>
+                <md-autocomplete flex="66"
+                    md-selected-item="lado.logradouro"
+                    md-search-text="lado.searchText"
+                    md-items="item in $ctrl.pesquisarLogradouro(lado.searchText)"
+                    md-item-text="item.nome"
+                    md-require-match
+                    md-floating-label="Logradouro">
+                    <span md-highlight-text="lado.searchText">{{ item.nome }}</span>
+                </md-autocomplete>
+            </div>
+            <md-button ng-click="$ctrl.adicionarLado()">Adicionar lado</md-button>
+        </md-content>
     </div>
-    <md-button ng-click="$ctrl.adicionarLado()">Adicionar lado</md-button>
-</md-content>
+</form>

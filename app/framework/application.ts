@@ -9,12 +9,13 @@ import "angular-messages"
 import "angular-sanitize"
 import "angular-parse"
 import "angular-ui-router"
+import "angular-ui-validate"
 import "angular-material-sidemenu"
 import "angular-busy2"
 
 // create angular module "app" and export
 export const Application = angular.module("app", [
-    "ui.router", "ngMaterial", "ngParse", "ngMaterialSidemenu", "angular-busy"
+    "ngMaterial", "ngMessages", "ui.router", "ui.validate", "ngParse", "ngMaterialSidemenu", "angular-busy"
 ])
 
 const BLANK_MODULE = {

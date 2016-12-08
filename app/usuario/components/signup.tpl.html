@@ -6,29 +6,29 @@
 <form layout="row" layout-align="center center" layout-padding  ng-submit="$ctrl.doSignup()">
     <md-content flex-gt-sm="33" flex="100" layout="column" cg-busy="$ctrl.busy">
         <div ng-if="!$ctrl.configurado">
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Chave mestra (master key)</label>
                 <input type="text" required name="chave_mestra" ng-model="$ctrl.chave_mestra">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Nome</label>
                 <input type="text"  name="nome" ng-model="$ctrl.usuario.nome">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Usuário</label>
                 <input type="text"  name="usuário" ng-model="$ctrl.usuario.username">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Senha</label>
                 <input type="password"  name="senha" ng-model="$ctrl.usuario.password">
             </md-input-container>
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Confirmar senha</label>
                 <input type="password"  name="senha" ng-model="$ctrl.usuario.password">
             </md-input-container>
             <md-button type="submit" class="md-raised md-primary">Concluir configuração</md-button>
         </div>
-        <div>
+        <div ng-if="$ctrl.configurado">
             <p>Sistema já configurado</p>
         </div>
     </md-content>

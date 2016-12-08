@@ -1,10 +1,12 @@
 class BairroFormCtrl {
-    public bairro;
+    public bairro
+    public form
 
     constructor() {
     }
 
     salvar() {
+        if(this.form.$invalid) return
         this.bairro.save().then(r => {
             history.back()
         })

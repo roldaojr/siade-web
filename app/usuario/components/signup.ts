@@ -27,7 +27,7 @@ class SignupFormCtrl {
     finalizarConfig() {
         let request = {
             method: "PUT",
-            url: serverConfig.serverURL+"config",
+            url: serverConfig.serverURL+"/config",
             data: {params: {configurado: true}},
             headers: {
                 "X-Parse-Application-Id": serverConfig.appId,
@@ -40,7 +40,7 @@ class SignupFormCtrl {
             if(e.status == 403) {
                 this.$mdToast.showSimple("Chave mestra incorreta")
             } else {
-                this.$mdToast.showSimple("Erro: "+e.message)
+                this.$mdToast.showSimple("Erro ao realizar configuração")
             }
         })
     }

@@ -1,11 +1,13 @@
 
 class ImovelFormCtrl {
-    private imovel
+    public imovel
+    public form
 
     constructor() {
     }
 
     salvar() {
+        if(this.form.$invalid) return
         this.imovel.save().then(imovel => {
             history.back()
         })
