@@ -1,22 +1,19 @@
 <md-toolbar class="md-tall" layout-align="center center" layout="row">
-    <div flex flex-sm="0" flex-xs="0"></div>
     <h2>SIADE</h2>
-    <div flex flex-sm="0" flex-xs="0"></div>
 </md-toolbar>
 <form layout="row" layout-align="center center" layout-padding  ng-submit="$ctrl.doLogin()">
-    <div flex flex-sm="0" flex-xs="0"></div>
-    <md-content flex cg-busy="$ctrl.busy">
-        <md-input-container class="md-block">
+    <md-content flex-gt-sm="33" flex="100" layout="column" cg-busy="$ctrl.busy" ng-if="$ctrl.configurado">
+        <md-input-container>
             <label>Usuário</label>
             <input type="text" required name="usuário" ng-model="$ctrl.username">
         </md-input-container>
-        <md-input-container class="md-block">
+        <md-input-container>
             <label>Senha</label>
             <input type="password" required name="senha" ng-model="$ctrl.password">
         </md-input-container>
-        <div layout="row">
-            <md-button class="md-raised md-primary" type="submit" flex="100">Entrar</md-button>
-        </div>
+        <md-button class="md-raised md-primary" type="submit">Entrar</md-button>
     </md-content>
-    <div flex flex-sm="0" flex-xs="0"></div>
+    <div flex-gt-sm="33" flex="100" layout="column">
+        <md-button class="md-primary" ui-sref="signup" ng-if="!$ctrl.configurado">Inscrever-se</md-button>
+    </div>
 </form>

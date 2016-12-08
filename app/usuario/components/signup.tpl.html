@@ -1,0 +1,35 @@
+<md-toolbar class="md-tall" layout-align="center center" layout="row">
+    <div flex flex-sm="0" flex-xs="0"></div>
+    <h2>SIADE</h2>
+    <div flex flex-sm="0" flex-xs="0"></div>
+</md-toolbar>
+<form layout="row" layout-align="center center" layout-padding  ng-submit="$ctrl.doSignup()">
+    <md-content flex-gt-sm="33" flex="100" layout="column" cg-busy="$ctrl.busy">
+        <div ng-if="!$ctrl.configurado">
+            <md-input-container>
+                <label>Chave mestra (master key)</label>
+                <input type="text" required name="chave_mestra" ng-model="$ctrl.chave_mestra">
+            </md-input-container>
+            <md-input-container>
+                <label>Nome</label>
+                <input type="text"  name="nome" ng-model="$ctrl.usuario.nome">
+            </md-input-container>
+            <md-input-container>
+                <label>Usuário</label>
+                <input type="text"  name="usuário" ng-model="$ctrl.usuario.username">
+            </md-input-container>
+            <md-input-container>
+                <label>Senha</label>
+                <input type="password"  name="senha" ng-model="$ctrl.usuario.password">
+            </md-input-container>
+            <md-input-container>
+                <label>Confirmar senha</label>
+                <input type="password"  name="senha" ng-model="$ctrl.usuario.password">
+            </md-input-container>
+            <md-button type="submit" class="md-raised md-primary">Concluir configuração</md-button>
+        </div>
+        <div>
+            <p>Sistema já configurado</p>
+        </div>
+    </md-content>
+</form>

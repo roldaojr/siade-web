@@ -1,11 +1,13 @@
 class LoginFormCtrl {
-    static $inject = ["$rootScope", "$mdToast", "$state", "Parse", "$timeout"]
+    static $inject = ["$rootScope", "$mdToast", "$state", "Parse"]
     public busy
     public username
     public password
+    public configurado
 
-    constructor(protected $rootScope, protected $mdToast, protected $state, protected Parse, protected $timeout) {
-
+    constructor(protected $rootScope, protected $mdToast, protected $state,
+                protected Parse) {
+        this.configurado = Parse.Config.current().get("configurado")
     }
 
     doLogin() {
@@ -17,7 +19,6 @@ class LoginFormCtrl {
             })
             .catch(e =>  this.$mdToast.showSimple("Erro de autenticação: "+e.message))
     }
-
 }
 
 export const cpLoginForm:ng.IComponentOptions = {

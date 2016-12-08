@@ -40,3 +40,9 @@ export const UsuarioEditarState = {
         }
     }
 }
+
+export const usuarioInicialState = {
+    name: "signup",
+    url: "/signup",
+    template: "<cp-signup-form/>",
+}

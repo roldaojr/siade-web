@@ -21,7 +21,7 @@ export const debugRouterRunBlock = ["$rootScope", $rootScope => {
 
 export const authHookRunBlock = ["$rootScope", "$state", "Parse", ($rootScope, $state, Parse) => {
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-        if(toState.name === "login" || toState.name === "logout") return
+        if(toState.name === "login" || toState.name === "logout" || toState.name === "signup") return
         let currentUser = Parse.User.current()
         if (!(currentUser && currentUser.authenticated())) {
             event.preventDefault()
