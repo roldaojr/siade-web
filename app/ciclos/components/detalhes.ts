@@ -15,7 +15,7 @@ class CicloDetalhesCtrl {
         let confirm = this.$mdDialog.confirm()
             .targetEvent(ev).ok("Encerrar ciclo").cancel('Cancelar')
             .title("Encerrar ciclo").textContent("Deseja realmente encerrar o ciclo "+
-                   this.ciclo.numero+"/"+this.ciclo.ano_base+"?")
+                   this.ciclo+"?")
         this.$mdDialog.show(confirm).then(() => {
             this.ciclo.fechado_em = new Date()
             return this.ciclo.save()
@@ -23,6 +23,7 @@ class CicloDetalhesCtrl {
             this.$mdToast.showSimple("Ciclo encerrado")
             this.$state.reload()
         }).catch(e => {
+            if(!e) return
             console.log('erro', e)
             this.$mdToast.showSimple("Erro: "+e.message)}
         )

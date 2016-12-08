@@ -1,13 +1,19 @@
 class CicloFormCtrl {
-    public ciclo;
+    public ciclo
+    public form
 
-    constructor() {
+    constructor(CicloModel, protected CicloDao) {
+        this.ciclo = new CicloModel()
+        this.ciclo.ano_base = new Date().getFullYear()
     }
 
+
     salvar() {
-        /*this.ciclo.save().then(r => {
+        if(this.form.$invalid) return
+        this.CicloDao.iniciarCiclo(this.ciclo)
+        this.ciclo.save().then(r => {
             history.back()
-        })*/
+        })
     }
 }
 

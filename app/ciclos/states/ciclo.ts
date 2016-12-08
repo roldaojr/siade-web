@@ -17,8 +17,18 @@ export const CicloDetalhesState = {
             } else {
                 return CicloDao.buscarAtual()
             }
+        },
+        atual: ($state, ciclo) => {
+                if(!ciclo) $state.go("ciclo.iniciar", {}, {location:"replace"})
         }
     }
+}
+
+export const CicloIniciarState = {
+    parent: "main",
+    name: "ciclo.iniciar",
+    url: "/ciclo/iniciar",
+    template: '<cp-ciclo-form/>',
 }
 
 export const CicloAnterioresState = {

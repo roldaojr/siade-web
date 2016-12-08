@@ -10,6 +10,17 @@ export class CicloDao extends GenericDao {
     public buscarAtual() {
         return this.getQuery().descending("ano_base").descending("numero").first()
     }
+
+    public iniciarCiclo(ciclo) {
+        this.buscarAtual().then(atual => {
+            if(atual && atual.ano_base == ciclo.ano_base) {
+                ciclo.numero = atual.numero + 1
+            } else {
+                ciclo.numero = 1
+            }
+            return ciclo.save()
+        })
+    }
 }
 
 export class VisitaDao extends GenericDao {

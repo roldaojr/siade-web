@@ -1,7 +1,8 @@
 <md-toolbar layout="row" layout-align="space-between center">
     <fw-menu-button target="left"></fw-menu-button>
     <h2 class="md-toolbar-tools">Detalhes do ciclo</h2>
-    <md-button ng-click="$ctrl.encerrar($event)">Encerrar</md-button>
+    <md-button ng-hide="$ctrl.ciclo.fechado_em" ng-click="$ctrl.encerrar($event)">Encerrar</md-button>
+    <md-button ng-show="$ctrl.ciclo.fechado_em" ui-sref="ciclo.iniciar">Iniciar novo</md-button>
 </md-toolbar>
 <md-content class="md-padding">
 	<div layout-xs="column" layout="row" layout-wrap>
@@ -27,7 +28,7 @@
                     </div>
                     <div layout="row" layout-align="space-between center" ng-show="$ctrl.ciclo.fechado_em">
                         <div>Fechado em</div>
-                        <div class="md-secondary">{{ $ctrl.ciclo.fechado_em }} </div>
+                        <div class="md-secondary">{{ $ctrl.ciclo.fechado_em|date }} </div>
                     </div>
                 </md-card-content>
             </md-card>
