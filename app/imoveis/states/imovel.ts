@@ -54,8 +54,8 @@ export const ImovelAdicionarState = {
                 return null
             }
         },
-        imovel: (ImovelProvider, lado) => {
-            let imovel = new ImovelProvider()
+        imovel: (ImovelModel, lado) => {
+            let imovel = new ImovelModel()
             imovel.lado = lado
             imovel.quadra = lado.quadra
             return imovel
