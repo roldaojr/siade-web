@@ -1,0 +1,28 @@
+<form name="$ctrl.form" novalidate ng-submit="$ctrl.salvar()">
+    <md-toolbar layout="row" layout-align="space-between center">
+        <fw-menu-button target="left"></fw-menu-button>
+        <h2 class="md-toolbar-tools">Relatório {{ $ctrl.tipo }}</h2>
+    </md-toolbar>
+    <div layout-padding>
+        <md-content layout="column">
+            <md-input-container class="md-block">
+                <label>Data</label>
+                <md-datepicker name="data" required type="date" ng-model="$ctrl.data">
+                <div ng-messages="$ctrl.form.data.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                    <div ng-message="valid">Data inválida</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Agentes</label>
+                <md-select name="agentes" ng-model="$ctrl.agentesSel" ng-model-options="{trackBy: '$value.id'}" multiple required>
+                    <md-option ng-value="agente" ng-repeat="agente in $ctrl.agentes">{{ agente.nome }}</md-option>
+                </md-select>
+                <div ng-messages="$ctrl.form.agentes.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit">Gerar relatório</md-button>
+        </md-content>
+    </div>
+</form>

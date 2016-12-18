@@ -5,17 +5,26 @@ export const RelatorioState = {
     abstract: true,
 }
 
-export const RelatorioAtualState = {
+export const RelatorioDiarioState = {
     parent: "main",
     name: "relatorio.diario",
     url: "/relatorio/diario",
-    templateUrl: "relatorios/components/relatorio-diario.tpl.html"
+    template: '<cp-relatorio-diario agentes="$resolve.agentes"/>',
+    resolve: {
+        agentes: (UsuarioDao) => {
+            return UsuarioDao.buscarTodos()
+        }
+    }
 }
 
-
-export const RelatorioAnterioresState = {
+export const RelatorioSemanalState = {
     parent: "main",
     name: "relatorio.semanal",
     url: "/relatorio/semanal",
-    templateUrl: "relatorios/components/relatorio-semanal.tpl.html"
+    template: '<cp-relatorio-semanal agentes="$resolve.agentes"/>',
+    resolve: {
+        agentes: (UsuarioDao) => {
+            return UsuarioDao.buscarTodos()
+        }
+    }
 }
