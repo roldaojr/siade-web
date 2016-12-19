@@ -9,7 +9,7 @@ export const ImovelListarState = {
     parent: "main",
     name: "imovel.listar",
     url: "/imovel/listar/quadra/:quadraId",
-    template: '<cp-imovel-listar lado="$resolve.lado"/>',
+    template: '<cp-imovel-listar layout-fill layout="column" lado="$resolve.lado"/>',
     resolve: {
         lado: ($stateParams, LadoDao, QuadraModel) => {
             let quadra = QuadraModel.createWithoutData($stateParams.quadraId)
@@ -23,7 +23,7 @@ export const ImovelListarLadoState = {
     parent: "main",
     name: "imovel.listar.lado",
     url: "/imovel/listar/lado/:ladoId",
-    template: '<cp-imovel-listar lado="$resolve.lado"/>',
+    template: '<cp-imovel-listar layout-fill layout="column" lado="$resolve.lado"/>',
     params: {lado: null},
     resolve: {
         lado: ($stateParams, LadoDao, LadoModel) => {
@@ -42,7 +42,7 @@ export const ImovelAdicionarState = {
     parent: "main",
     name: "imovel.adicionar",
     url: "/imovel/adicionar/:ladoId",
-    template: '<cp-imovel-form imovel="$resolve.imovel"/>',
+    template: '<cp-imovel-form layout-fill layout="column" imovel="$resolve.imovel"/>',
     params: {lado: null},
     resolve: {
         lado: ($stateParams, LadoDao) => {
@@ -67,7 +67,7 @@ export const ImovelEditarState = {
     parent: "main",
     name: "imovel.editar",
     url: "/imovel/editar/:imovelId",
-    template: '<cp-imovel-form imovel="$resolve.imovel"/>',
+    template: '<cp-imovel-form layout-fill layout="column" imovel="$resolve.imovel"/>',
     resolve: {
         imovel: ($stateParams, ImovelDao) => {
             return ImovelDao.buscarPeloId($stateParams.imovelId)

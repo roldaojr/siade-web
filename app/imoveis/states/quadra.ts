@@ -9,7 +9,7 @@ export const QuadraListarState = {
     parent: 'main',
     name: "quadra.listar",
     url: "/quadra/listar/:bairroId",
-    template: '<cp-quadra-listar bairro="$resolve.bairro"/>',
+    template: '<cp-quadra-listar layout-fill layout="column" bairro="$resolve.bairro"/>',
     resolve: {
         bairro: ($stateParams, BairroModel, BairroDao) => {
             if($stateParams.bairro){ 
@@ -27,7 +27,7 @@ export const QuadraAdicionarState = {
     parent: 'main',
     name: "quadra.adicionar",
     url: "/quadra/adicionar/:bairroId",
-    template: '<cp-quadra-form quadra="$resolve.quadra"/>',
+    template: '<cp-quadra-form layout-fill layout="column" quadra="$resolve.quadra"/>',
     params: {lado: null},
     resolve: {
         bairro: ($stateParams, BairroDao) => {
@@ -51,7 +51,7 @@ export const QuadraEditarState = {
     parent: 'main',
     name: "quadra.editar",
     url: "/quadra/editar/:quadraId",
-    template: '<cp-quadra-form quadra="$resolve.quadra"/>',
+    template: '<cp-quadra-form layout-fill layout="column" quadra="$resolve.quadra"/>',
     resolve: {
         quadra: ($stateParams, QuadraDao) => {
             return QuadraDao.buscarPeloId($stateParams.quadraId)

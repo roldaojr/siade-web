@@ -3,7 +3,7 @@ export const CicloSelecionarAgenteState = {
     name: "ciclo.selecionar-agente",
     url: "/ciclo/distribuir-quadras/agente",
     params: {trabalho: null},
-    template: "<cp-ciclo-selecionar-agente/>"
+    template: '<cp-ciclo-selecionar-agente layout-fill layout="column"/>'
 }
 
 export const CicloSelecionarQuadraState = {
@@ -11,7 +11,7 @@ export const CicloSelecionarQuadraState = {
     name: "ciclo.selecionar-quadras",
     url: "/ciclo/distribuir-quadras/quadras/:trabalhoId",
     params: {trabalho: null},
-    template: '<cp-ciclo-selecionar-quadras trabalho="$resolve.trabalho"/>',
+    template: '<cp-ciclo-selecionar-quadras layout-fill layout="column" trabalho="$resolve.trabalho"/>',
     resolve: {
         trabalho: ($stateParams, TrabalhoDao) => {
             if($stateParams.trabalho) {

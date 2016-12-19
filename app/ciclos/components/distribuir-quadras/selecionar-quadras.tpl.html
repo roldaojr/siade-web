@@ -2,7 +2,7 @@
     <div flex-xs flex-order-xs="1" layout="row" layout-align="space-between center">
         <fw-back-button></fw-back-button>
         <div class="md-toolbar-tools">
-            <h1>Selecionar quadras</h3>
+            <h1>Sel. quadras</h3>
         </div>
     </div>
     <div flex-xs="grow" flex-order-xs="3">
@@ -18,7 +18,7 @@
         <md-button ng-click="$ctrl.concluir()">Concluir</md-button>
     </div>
 </md-toolbar>
-<md-content class="md-padding" cg-busy="$ctrl.asyncLoad">
+<md-content class="md-padding" flex cg-busy="$ctrl.asyncLoad">
     <div layout-xs="column" layout="row" layout-wrap>
         <div flex="25" flex-sm="33" flex-xs="100" ng-repeat="quadra in $ctrl.quadras">
             <md-card>

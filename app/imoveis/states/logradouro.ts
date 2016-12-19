@@ -9,14 +9,14 @@ export const LogradouroListarState = {
     parent: "main",
     name: "logradouro.listar",
     url: "/logradouro/listar",
-    template: "<cp-logradouro-listar/>"
+    template: '<cp-logradouro-listar layout-fill layout="column"/>'
 }
 
 export const LogradouroEditarState = {
     parent: "main",
     name: "logradouro.editar",
     url: "/logradouro/editar/:logradouroId",
-    template: '<cp-logradouro-form logradouro="$resolve.logradouro"/>',
+    template: '<cp-logradouro-form layout-fill layout="column" logradouro="$resolve.logradouro"/>',
     params: {logradouro: null},
     resolve: {
     	logradouro: ($stateParams, LogradouroDao) => {
@@ -33,7 +33,7 @@ export const LogradouroAdicionarState = {
     parent: "main",
     name: "logradouro.adicionar",
     url: "/logradouro/adicionar",
-    template: '<cp-logradouro-form logradouro="$resolve.logradouro"/>',
+    template: '<cp-logradouro-form layout-fill layout="column" logradouro="$resolve.logradouro"/>',
     resolve: {
     	logradouro: (LogradouroModel) => {
     		return new LogradouroModel()

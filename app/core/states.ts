@@ -1,7 +1,7 @@
 
 export const mainState = {
     name: "main",
-    template: "<main/>",
+    template: "<main layout-fill/>",
 };
 
 export const homeState = {

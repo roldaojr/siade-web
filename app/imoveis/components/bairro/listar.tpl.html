@@ -3,7 +3,7 @@
     <h2 class="md-toolbar-tools">Bairros</h2>
     <md-button ui-sref="bairro.adicionar">Adicionar</md-button>
 </md-toolbar>
-<md-content layout="column" cg-busy="bairrosPromise">
+<md-content layout="column" flex cg-busy="bairrosPromise">
     <md-list>
         <md-list-item ui-sref="bairro.editar({bairroId: bairro.id})" ng-repeat="bairro in bairros">
             {{ bairro.nome }}

@@ -3,7 +3,7 @@
     <h2 class="md-toolbar-tools">Agentes</h2>
     <md-button ui-sref="usuario.adicionar">Adicionar</md-button>
 </md-toolbar>
-<md-content layout="column" cg-busy="usuariosPromise">
+<md-content flex layout="column" cg-busy="usuariosPromise">
     <md-list>
         <md-list-item ui-sref="usuario.editar({usuarioId: usuario.id})" ng-repeat="usuario in $ctrl.usuarios">
             {{ usuario.nome }}

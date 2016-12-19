@@ -1,4 +1,4 @@
-<div class="layout-row flex" flex layout="row">
+<div layout-fill layout="row">
     <md-sidenav class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')"
                 md-component-id="left" md-whiteframe="4" layout="column">
         <md-toolbar layout-align="center center">
@@ -27,7 +27,6 @@
             </md-sidemenu>
         </md-content>
     </md-sidenav>
-    <md-content layout="column" flex id="content">
-        <ui-view></ui-view>
-    </md-content>
+    <ui-view layout="column" layout-fill id="content">
+    </ui-view>
 </div>

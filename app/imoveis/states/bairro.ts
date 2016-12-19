@@ -9,14 +9,14 @@ export const BairroListarState = {
     parent: "main",
     name: "bairro.listar",
     url: "/bairro/listar",
-    template: "<cp-bairro-listar/>"
+    template: '<cp-bairro-listar layout-fill layout="column"/>'
 }
 
 export const BairroEditarState = {
     parent: "main",
     name: "bairro.editar",
     url: "/bairro/editar/:bairroId",
-    template: '<cp-bairro-form bairro="$resolve.bairro"/>',
+    template: '<cp-bairro-form layout-fill layout="column" bairro="$resolve.bairro"/>',
     params: {bairro: null},
     resolve: {
     	bairro: ($stateParams, BairroDao) => {
@@ -33,7 +33,7 @@ export const BairroAdicionarState = {
     parent: "main",
     name: "bairro.adicionar",
     url: "/bairro/adicionar",
-    template: '<cp-bairro-form bairro="$resolve.bairro"/>',
+    template: '<cp-bairro-form layout-fill layout="column" bairro="$resolve.bairro"/>',
     resolve: {
     	bairro: (BairroModel) => {
     		return new BairroModel()

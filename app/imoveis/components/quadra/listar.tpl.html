@@ -16,7 +16,7 @@
         <md-button ui-sref="quadra.adicionar({bairroId:$ctrl.bairro.id})">Adicionar</md-button>
     </div>
 </md-toolbar>
-<md-content class="md-padding" cg-busy="[bairrosPromise,quadrasPromise]">
+<md-content flex class="md-padding" cg-busy="[bairrosPromise,quadrasPromise]">
     <div layout-xs="column" layout="row" layout-wrap>
         <div flex="33" flex-xs="100" ng-repeat="quadra in $ctrl.quadras">
             <md-card>

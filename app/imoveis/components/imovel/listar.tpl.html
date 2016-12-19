@@ -16,7 +16,7 @@
         <md-button ui-sref="imovel.adicionar({lado:$ctrl.lado})">Adicionar</md-button>
     </div>
 </md-toolbar>
-<md-content class="md-padding" cg-busy="[ladosPromise,imoveisPromise]">
+<md-content flex class="md-padding" cg-busy="[ladosPromise,imoveisPromise]">
     <div layout-xs="column" layout="row" layout-wrap>
         <div flex="33" flex-xs="100" ng-repeat="imovel in $ctrl.imoveis">
             <md-card>
