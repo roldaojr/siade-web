@@ -18,7 +18,7 @@ var api = new ParseServer(serverConfig)
 var dashboard = new ParseDashboard({
     "apps": [
         {
-            "serverURL": serverConfig.serverURL,
+            "serverURL": serverConfig.serverURL+"/parse",
             "appId": serverConfig.appId,
             "masterKey": serverConfig.masterKey,
             "appName": serverConfig.appName
