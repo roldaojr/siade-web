@@ -1,9 +1,9 @@
-<form name="$ctrl.form" novalidate ng-submit="$ctrl.salvar()">
+<form name="$ctrl.form" layout-fill layout="column" novalidate ng-submit="$ctrl.imprimir()">
     <md-toolbar layout="row" layout-align="space-between center">
         <fw-menu-button target="left"></fw-menu-button>
         <h2 class="md-toolbar-tools">Relatório {{ $ctrl.tipo }}</h2>
     </md-toolbar>
-    <div layout-padding>
+    <div layout="column" flex layout-padding cg-busy="$ctrl.relatorioPromise">
         <md-content layout="column">
             <md-input-container class="md-block">
                 <label>Data</label>

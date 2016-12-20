@@ -35,8 +35,31 @@ export const CicloModel = ["Parse", Parse => {
 }]
 
 export const VisitaModel = ["Parse", Parse => {
-    let subClass = Parse.Object.extend("Visita")
-    Parse.defineAttributes(subClass, [
+    class Visita extends Parse.Object {
+        static Pendencias = {
+            Nenhuma: 0, Fechada: 1, Recusada: 2,
+            0: "Nenhuma", 2: "Fechada", 3: "Recusada"
+        }
+
+        static Tipos = {
+            Normal: 0, Recuperada: 1,
+            0: "Normal", 1: "Recuperada"
+        }
+
+        public pendencia
+        public tipo
+
+        constructor() { super("Visita") }
+
+        get tipo_label():string {
+            return Visita.Tipos[this.tipo || 0]
+        }
+
+        get pendencia_label():string {
+            return Visita.Pendencias[this.pendencia]
+        }
+    }
+    Parse.defineAttributes(Visita, [
         "imovel_tratado", "imovel_inspecionado",
         "depositos_tratados", "depositos_eliminados",
         "larvicida", "quantidade_larvicida",
@@ -47,7 +70,8 @@ export const VisitaModel = ["Parse", Parse => {
         "data_hora", "ciclo", "agente", "imovel",
         "tipo_visita", "pendencia", "validada"
     ])
-    return subClass
+    Parse.Object.registerSubclass("Visita", Visita)
+    return Visita
 }]
 
 export const TrabalhoModel = ["Parse", "QuadraModel", (Parse, QuadraModel) => {

@@ -19,6 +19,7 @@
     "angular-ui-router": "^0.3.2",
     "angular-ui-validate": "^1.2.2",
     "parse": "^1.9.2",
+    "pdfmake": "^0.1.18",
     "systemjs": "^0.19.41",
     "typescript": "^2.0.10",
     "typings": "^2.0.0",

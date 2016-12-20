@@ -38,6 +38,14 @@ export class VisitaDao extends GenericDao {
         return this.getQuery().descending("ano_base").descending("numero")
                    .equalTo("imovel", imovel).find()
     }
+
+    public buscarPorCicloDataEAgente(ciclo, data, agente) {
+        let data2 = new Date(data.getTime() + (1 * 24 * 3600 * 1000))
+        return this.getQuery().equalTo("ciclo", ciclo).equalTo("agente", agente)
+                   .greaterThanOrEqualTo("data_hora", data)
+                   .lessThanOrEqualTo("data_hora", data2)
+                   .limit(1000)
+    }
 }
 
 export class TrabalhoDao extends GenericDao {

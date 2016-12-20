@@ -1,12 +1,20 @@
 class RelatorioDiarioCtrl {
+    static $inject = ["CicloDao", "RelatorioDiarioService"]
+
+    public relatorioPromise
+    public ciclo
     public agentes
+    public agentesSel
+    public data
     public tipo
 
-    constructor() {
+    constructor(CicloDao, protected RelatorioDiarioService) {
     	this.tipo = "Diário"
+        CicloDao.buscarAtual().then(c => this.ciclo = c)
     }
 
-    salvar() {
+    imprimir() {
+        this.relatorioPromise = this.RelatorioDiarioService.gerar(this.ciclo, this.data, this.agentesSel)
     }
 }
 

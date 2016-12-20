@@ -1,0 +1,10 @@
+<form name="$ctrl.form" novalidate ng-submit="$ctrl.salvar()">
+    <md-toolbar layout="row" layout-align="space-between center">
+        <fw-menu-button target="left"></fw-menu-button>
+        <h2 class="md-toolbar-tools">Relatório {{ $ctrl.tipo }}</h2>
+    </md-toolbar>
+    <md-content layout="column">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        <div>Gerando relatório</div>
+    </md-content>
+</form>
