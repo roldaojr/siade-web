@@ -39,10 +39,9 @@ export class VisitaDao extends GenericDao {
                    .equalTo("imovel", imovel).find()
     }
 
-    public buscarPorCicloDataEAgente(ciclo, data, agente) {
-        let data2 = new Date(data.getTime() + (1 * 24 * 3600 * 1000))
+    public buscarPorCicloDataEAgente(ciclo, data1, data2, agente) {
         return this.getQuery().equalTo("ciclo", ciclo).equalTo("agente", agente)
-                   .greaterThanOrEqualTo("data_hora", data)
+                   .greaterThanOrEqualTo("data_hora", data1)
                    .lessThanOrEqualTo("data_hora", data2)
                    .limit(1000)
     }
