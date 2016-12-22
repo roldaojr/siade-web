@@ -29,3 +29,12 @@ export const authHookRunBlock = ["$rootScope", "$state", "Parse", ($rootScope, $
         }
     })
 }]
+
+export const stateChangeRunBlock = ["$rootScope", "$mdSidenav", "$mdComponentRegistry",
+                                    ($rootScope, $mdSidenav, $mdComponentRegistry) => {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+        $mdComponentRegistry.when('left').then(() => {
+            $mdSidenav('left').close()
+        })
+    })
+}]
