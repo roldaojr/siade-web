@@ -1,6 +1,7 @@
 class CicloFormCtrl {
     public ciclo
     public form
+    public promise
 
     constructor(CicloModel, protected CicloDao) {
         this.ciclo = new CicloModel()
@@ -10,8 +11,7 @@ class CicloFormCtrl {
 
     salvar() {
         if(this.form.$invalid) return
-        this.CicloDao.iniciarCiclo(this.ciclo)
-        this.ciclo.save().then(r => {
+        this.promise = this.CicloDao.iniciarCiclo(this.ciclo).then(r => {
             history.back()
         })
     }

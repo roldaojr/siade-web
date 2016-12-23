@@ -2,13 +2,14 @@
 class ImovelFormCtrl {
     public imovel
     public form
+    public promise
 
     constructor() {
     }
 
     salvar() {
         if(this.form.$invalid) return
-        this.imovel.save().then(imovel => {
+        this.promise = this.imovel.save().then(imovel => {
             history.back()
         })
     }

@@ -2,13 +2,14 @@
 class LogradouroFormCtrl {
     public logradouro
     public form
+    public promise
 
     constructor() {
     }
 
     salvar() {
         if(this.form.$invalid) return
-        this.logradouro.save().then(r => {
+        this.promise = this.logradouro.save().then(r => {
             history.back()
         })
     }

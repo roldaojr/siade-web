@@ -1,10 +1,11 @@
 
 class CicloListarCtrl {
-    static $inject = ["$scope", "CicloDao"]
+    static $inject = ["CicloDao"]
+    public ciclos
+    public promise
 
-	constructor($scope, CicloDao) {
-        $scope.ciclosPromise = CicloDao
-            .buscarTodos().then(r => {$scope.ciclos = r; console.log('buscarTodos', r)})
+	constructor(CicloDao) {
+        this.promise = CicloDao.buscarTodos().then(r => this.ciclos = r)
     }
 }
 

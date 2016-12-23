@@ -3,9 +3,9 @@
     <h2 class="md-toolbar-tools">Logradouros</h2>
     <md-button ui-sref="logradouro.adicionar">Adicionar</md-button>
 </md-toolbar>
-<md-content flex layout="column" cg-busy="logradourosPromise">
+<md-content flex layout="column" cg-busy="$ctrl.promise">
     <md-list>
-        <md-list-item ui-sref="logradouro.editar({logradouro: logradouro})" ng-repeat="logradouro in logradouros">
+        <md-list-item ui-sref="logradouro.editar({logradouro: logradouro})" ng-repeat="logradouro in $ctrl.logradouros">
             {{ logradouro.nome }}
         </md-list-item>
     </md-list>

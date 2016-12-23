@@ -5,7 +5,7 @@
     </div>
     <div flex-xs="grow" flex-order-xs="3">
         <md-input-container class="md-block" ng-show="$ctrl.lados">
-            <md-select class="md-no-underline" ng-model="$ctrl.ladoSel" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Lado" ng-change="$ctrl.mudarLado()">
+            <md-select class="md-no-underline" ng-model="$ctrl.lado" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Lado" ng-change="$ctrl.mudarLado()">
                 <md-option ng-repeat="lado in $ctrl.lados" ng-value="lado">
                     Lado {{ lado.numero }}
                 </md-option>
@@ -16,7 +16,7 @@
         <md-button ui-sref="imovel.adicionar({lado:$ctrl.lado})">Adicionar</md-button>
     </div>
 </md-toolbar>
-<md-content flex class="md-padding" cg-busy="[ladosPromise,imoveisPromise]">
+<md-content flex class="md-padding" cg-busy="[$ctrl.ladosPromise,$ctrl.imoveisPromise]">
     <div layout-xs="column" layout="row" layout-wrap>
         <div flex="33" flex-xs="100" ng-repeat="imovel in $ctrl.imoveis">
             <md-card>

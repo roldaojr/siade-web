@@ -2,7 +2,7 @@ import * as serverConfig from "../../server.config"
 
 class SignupFormCtrl {
     static $inject = ["$rootScope", "$http", "$mdToast", "$state", "Parse", "UsuarioModel"]
-    public busy
+    public prmise
     public usuario
     public chave_mestra:string
     public configurado:boolean
@@ -16,7 +16,7 @@ class SignupFormCtrl {
     doSignup() {
         if(this.configurado) return
         this.usuario.tipo = this.UsuarioModel.Tipos.SUPERVISOR
-        this.busy = this.usuario.signUp().then(u => {
+        this.prmise = this.usuario.signUp().then(u => {
             this.$rootScope.currentUser = u
             this.$mdToast.showSimple("Criado com sucesso")
             this.finalizarConfig()

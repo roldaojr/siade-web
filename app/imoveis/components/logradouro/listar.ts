@@ -1,10 +1,11 @@
 
 class LogradouroListarCtrl {
-    static $inject = ["$scope", "LogradouroDao"]
+    static $inject = ["LogradouroDao"]
+    public logradouros
+    public promise
 
-    constructor($scope, LogradouroDao) {
-        $scope.logradourosPromise = LogradouroDao
-            .buscarTodos().then(r => $scope.logradouros = r)
+    constructor(LogradouroDao) {
+        this.promise = LogradouroDao.buscarTodos().then(r => this.logradouros = r)
     }
 }
 

@@ -1,29 +1,28 @@
 class ImovelListarCtrl {
-    static $inject = ["$state", "$mdDialog", "$scope", "ImovelDao", "LadoDao", ]
-    lado; lados; ladoSel; imoveis;
-    public loading
+    static $inject = ["$state", "$mdDialog", "ImovelDao", "LadoDao"]
+    public lado
+    public lados
+    public imoveis
+    public imoveisPromise
+    public ladosPromise
 
-    constructor(protected $state, protected $mdDialog, protected $scope,
+    constructor(protected $state, protected $mdDialog
                 protected ImovelDao, protected LadoDao) {
-        this.ladoSel = this.lado
-        $scope.ladosPromise = LadoDao
-            .buscarPelaQuadra(this.lado.quadra).then(r => this.lados = r)
+        this.ladosPromise = this.LadoDao.buscarPelaQuadra(this.lado.quadra)
+                                        .then(r => this.lados = r)
         this.buscarImoveis()
     }
 
     buscarImoveis() {
-        this.$scope.imoveisPromise = this.ImovelDao
-            .buscarPeloLado(this.lado).then(r => this.imoveis = r)
+        this.imoveisPromise = this.ImovelDao.buscarPeloLado(this.lado)
+                                            .then(r => this.imoveis = r)
     }
 
     mudarLado() {
-        if(this.ladoSel.id != this.lado.id) {
-            this.$state.go('imovel.listar.lado',
-                {ladoId: this.ladoSel.id},
-                {notify:false, location: 'replace'})
-            this.lado = this.ladoSel
-            this.buscarImoveis()
-        }
+        this.$state.go('imovel.listar.lado',
+            {ladoId: this.lado.id},
+            {notify: false, location: 'replace'})
+        this.buscarImoveis()
     }
 
     excluirImovel(ev, imovel) {

@@ -1,11 +1,11 @@
 
 class UsuarioListarCtrl {
-    static $inject = ["$scope", "UsuarioDao"]
-    private usuarios
+    static $inject = ["UsuarioDao"]
+    public usuarios
+    public promise
 
-    constructor(protected $scope, protected UsuarioDao) {
-        $scope.usuariosPromise = UsuarioDao
-            .buscarTodos().then(r => this.usuarios = r)
+    constructor(protected UsuarioDao) {
+        this.promise = UsuarioDao.buscarTodos().then(r => this.usuarios = r)
     }
 }
 

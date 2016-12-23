@@ -1,14 +1,14 @@
 class QuadraFormCtrl {
-    static $inject = ["$scope", "LadoDao", "LadoModel", "LogradouroDao"]
+    static $inject = ["LadoDao", "LadoModel", "LogradouroDao"]
     public quadra
     public lados
     public form
+    public promise
 
-    constructor(protected $scope, protected LadoDao, protected LadoModel,
-                protected LogradouroDao) {
+    constructor(protected LadoDao, protected LadoModel, protected LogradouroDao) {
         if(this.quadra.id) {
-            $scope.ladosPromise = LadoDao
-                .buscarPelaQuadra(this.quadra).then(r => this.lados = r)
+            this.promise = LadoDao.buscarPelaQuadra(this.quadra)
+                                  .then(r => this.lados = r)
         } else {
             this.lados = []
         }
@@ -29,6 +29,7 @@ class QuadraFormCtrl {
         let valido = (itens.length == 1 && itens[0] != undefined && itens[0].id == lado.id) || itens.length == 0
         return valido
     }
+
     salvar() {
         if(this.form.$invalid) return
         this.quadra.total_lados = this.lados.length

@@ -1,6 +1,6 @@
 class LoginFormCtrl {
     static $inject = ["$rootScope", "$mdToast", "$state", "Parse"]
-    public busy
+    public promise
     public username
     public password
     public configurado
@@ -11,7 +11,7 @@ class LoginFormCtrl {
     }
 
     doLogin() {
-        this.busy = this.Parse.User.logIn(this.username, this.password)
+        this.promise = this.Parse.User.logIn(this.username, this.password)
             .then(u => {
                 this.$rootScope.currentUser = u
                 this.$mdToast.showSimple("Usuário autenticado")

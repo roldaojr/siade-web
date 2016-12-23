@@ -2,7 +2,7 @@
     <h2>SIADE</h2>
 </md-toolbar>
 <form layout="row" layout-align="center center" layout-padding ng-submit="$ctrl.doLogin()">
-    <md-content flex-gt-sm="33" flex="100" layout="column" cg-busy="$ctrl.busy">
+    <md-content flex-gt-sm="33" flex="100" layout="column" cg-busy="$ctrl.promise">
         <div ng-if="$ctrl.configurado" layout="column">
             <md-input-container class="md-block">
                 <label>Usuário</label>

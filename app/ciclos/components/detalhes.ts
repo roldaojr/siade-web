@@ -3,11 +3,11 @@ class CicloDetalhesCtrl {
 
     public ciclo
     public trabalhos
-    public trabalhosPromise
+    public promiseTrabalhos
 
     constructor(private $mdDialog, private $mdToast, private $state,
                 private TrabalhoDao) {
-    	this.trabalhosPromise = TrabalhoDao.buscarPeloCiclo(this.ciclo)
+    	this.promiseTrabalhos = TrabalhoDao.buscarPeloCiclo(this.ciclo)
     	                                   .then(r => this.trabalhos = r)
     }
 

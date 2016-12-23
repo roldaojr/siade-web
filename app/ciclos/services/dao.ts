@@ -12,7 +12,7 @@ export class CicloDao extends GenericDao {
     }
 
     public iniciarCiclo(ciclo) {
-        this.buscarAtual().then(atual => {
+        return this.buscarAtual().then(atual => {
             if(atual && atual.ano_base == ciclo.ano_base) {
                 ciclo.numero = atual.numero + 1
             } else {

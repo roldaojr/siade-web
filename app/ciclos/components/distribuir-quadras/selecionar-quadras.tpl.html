@@ -18,7 +18,7 @@
         <md-button ng-click="$ctrl.concluir()">Concluir</md-button>
     </div>
 </md-toolbar>
-<md-content class="md-padding" flex cg-busy="$ctrl.asyncLoad">
+<md-content class="md-padding" flex cg-busy="[$ctrl.promiseBairros,$ctrl.promiseQuadras,$ctrl.promiseQuadrasSel,$ctrl.promiseTrabalho]">
     <div layout-xs="column" layout="row" layout-wrap>
         <div flex="25" flex-sm="33" flex-xs="100" ng-repeat="quadra in $ctrl.quadras">
             <md-card>

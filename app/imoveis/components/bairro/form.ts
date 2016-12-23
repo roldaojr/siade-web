@@ -1,13 +1,14 @@
 class BairroFormCtrl {
     public bairro
     public form
+    public promise
 
     constructor() {
     }
 
     salvar() {
         if(this.form.$invalid) return
-        this.bairro.save().then(r => {
+        this.promise = this.bairro.save().then(r => {
             history.back()
         })
     }

@@ -1,26 +1,23 @@
 class CicloSelecionarQuadraCtrl {
-    static $inject = ["$state", "BairroDao", "QuadraDao", "TrabalhoModel", "QuadraModel"]
-
-    public asyncLoad
+    static $inject = ["$state", "BairroDao", "QuadraDao",
+                      "TrabalhoModel", "QuadraModel"]
     public bairros
     public bairro
     public quadras
     public quadras_sel
     public trabalho
+    public promiseBairros
+    public promiseQuadras
+    public promiseQuadrasSel
+    public promiseTrabalho
 
     constructor(protected $state,
                 protected BairroDao, protected QuadraDao,
                 protected TrabalhoModel, protected QuadraModel) {
-        this.asyncLoad = new Array()
-        this.quadras_sel = new Array()
-        this.asyncLoad.push(BairroDao.buscarTodos().then(r => {
-            this.bairros = r
-            this.bairro = r[0]
-            this.buscarQuadras()
-        }))
-        this.asyncLoad.push(this.trabalho.quadras.query().find().then(r => {
-            this.quadras_sel = r
-        }))
+        this.buscarBairros()
+        this.quadras_sel = []
+        this.promiseQuadrasSel = this.trabalho.quadras.query().find()
+            .then(r => this.quadras_sel = r)
     }
 
     quadraSelecionada(quadra) {
@@ -38,10 +35,17 @@ class CicloSelecionarQuadraCtrl {
         }
     }
 
+    buscarBairros() {
+        this.promiseBairros = this.BairroDao.buscarTodos().then(r => {
+            this.bairros = r
+            if(r.length > 0) this.bairro = r[0]
+            this.mudarBairro()
+        })
+    }
+
     buscarQuadras() {
-        this.asyncLoad.push(
-            this.QuadraDao.buscarPeloBairro(this.bairro).then(r => this.quadras = r)
-        )
+        this.promiseQuadras = this.QuadraDao.buscarPeloBairro(this.bairro)
+                                            .then(r => this.quadras = r)
     }
 
     mudarBairro() {
@@ -53,13 +57,9 @@ class CicloSelecionarQuadraCtrl {
             return total + (it.total_imoveis || 0)
         }, 0)
         this.trabalho.total_imoveis = total_imoveis
-        this.asyncLoad.push(
-            this.trabalho.save().then(r => {
-                this.$state.go("ciclo.detalhes", {ciclo: r.ciclo})
-            }).catch(e => {
-                console.log(e)
-            })
-        )
+        this.promiseTrabalho = this.trabalho.save().then(r => {
+            this.$state.go("ciclo.detalhes", {ciclo: r.ciclo})
+        })
     }
 }
 

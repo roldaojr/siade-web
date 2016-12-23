@@ -3,6 +3,7 @@ class UsuarioFormCtrl {
     static $inject = ["$mdDialog"]
     public usuario
     public form
+    public promise
 
     constructor(protected $mdDialog) {
     }
@@ -10,7 +11,7 @@ class UsuarioFormCtrl {
     salvar() {
         if(this.form.$invalid) return
         this.usuario.password = ""
-        this.usuario.save().then(r => {
+        this.promise = this.usuario.save().then(r => {
             history.back()
         })
     }

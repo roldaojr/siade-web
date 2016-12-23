@@ -41,7 +41,7 @@
                     </md-card-title-text>
                 </md-card-title>
                 <div>
-                    <md-list class="md-dense" flex>
+                    <md-list class="md-dense" cg-busy="$ctrl.promiseTrabalhos">
                         <md-list-item class="secondary-button-padding" ng-repeat="trabalho in $ctrl.trabalhos">
                             {{ trabalho.agente.nome }}
                             <span class="md-secondary">{{ trabalho.total_visitas || 0 }}/{{ trabalho.total_imoveis || 0 }}</span>

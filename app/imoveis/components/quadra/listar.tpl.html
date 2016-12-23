@@ -5,7 +5,7 @@
     </div>
     <div flex-xs="grow" flex-order-xs="3">
         <md-input-container class="md-block" ng-show="$ctrl.bairros">
-            <md-select class="md-no-underline" ng-model="$ctrl.bairroSel" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Bairro" ng-change="$ctrl.mudarBairro()">
+            <md-select class="md-no-underline" ng-model="$ctrl.bairro" ng-model-options="{trackBy: '$value.id'}" placeholder="Selecionar Bairro" ng-change="$ctrl.mudarBairro()">
                 <md-option ng-repeat="bairro in $ctrl.bairros" ng-value="bairro">
                     {{ bairro.nome }}
                 </md-option>
@@ -16,7 +16,7 @@
         <md-button ui-sref="quadra.adicionar({bairroId:$ctrl.bairro.id})">Adicionar</md-button>
     </div>
 </md-toolbar>
-<md-content flex class="md-padding" cg-busy="[bairrosPromise,quadrasPromise]">
+<md-content flex class="md-padding" cg-busy="[$ctrl.bairrosPromise,$ctrl.quadrasPromise]">
     <div layout-xs="column" layout="row" layout-wrap>
         <div flex="33" flex-xs="100" ng-repeat="quadra in $ctrl.quadras">
             <md-card>
