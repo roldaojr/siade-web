@@ -1,0 +1,18 @@
+<form name="$ctrl.form" layout-fill layout="column" novalidate ng-submit="$ctrl.imprimir()">
+    <md-toolbar layout="row" layout-align="space-between center">
+        <fw-menu-button target="left"></fw-menu-button>
+        <h2 class="md-toolbar-tools">Gerar QRCode</h2>
+    </md-toolbar>
+    <div layout="column" flex layout-padding cg-busy="$ctrl.promise">
+        <md-content layout="column">
+            <md-input-container class="md-block">
+                <label>Quantidade</label>
+                <input name="qtd" type="number" required="" step="1" ng-model="$ctrl.qtd">
+                <div ng-messages="$ctrl.form.qtd.$error" role="alert">
+                    <div ng-message="required">Campo obrigatório</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit">Gerar relatório</md-button>
+        </md-content>
+    </div>
+</form>

@@ -28,3 +28,10 @@ export const RelatorioSemanalState = {
         }
     }
 }
+
+export const QrCodeState = {
+    parent: "main",
+    name: "qrcode",
+    url: "/qrcode",
+    template: '<cp-qr-code layout-fill layout="column"/>'
+}
