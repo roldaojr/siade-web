@@ -7,6 +7,7 @@ class RelatorioDiarioCtrl {
     public agentesSel
     public data
     public tipo
+    public form
 
     constructor(CicloDao, protected RelatorioDiarioService) {
     	this.tipo = "Diário"
@@ -14,6 +15,7 @@ class RelatorioDiarioCtrl {
     }
 
     imprimir() {
+        if(this.form.$invalid) return
         this.relatorioPromise = this.RelatorioDiarioService.gerar(this.ciclo, this.data, this.agentesSel)
     }
 }
