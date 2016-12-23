@@ -6,8 +6,8 @@
         </h2>
         <md-button type="submit">Salvar</md-button>
     </md-toolbar>
-    <div layout="column" layout-padding flex>
-        <md-content layout="column">
+    <md-content class="md-padding">
+        <div layout="column">
             <md-input-container class="md-block">
                 <label>Nome</label>
                 <input name="nome" required type="text" ng-model="$ctrl.usuario.nome">
@@ -36,6 +36,6 @@
                     <div ng-message="required">Campo obrigatório</div>
                 </div>
             </md-input-container>
-        </md-content>
-    </div>
+        </div>
+    </md-content>
 </form>

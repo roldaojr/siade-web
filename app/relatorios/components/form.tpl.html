@@ -3,8 +3,8 @@
         <fw-menu-button target="left"></fw-menu-button>
         <h2 class="md-toolbar-tools">Relatório {{ $ctrl.tipo }}</h2>
     </md-toolbar>
-    <div layout="column" flex layout-padding cg-busy="$ctrl.relatorioPromise">
-        <md-content layout="column">
+    <md-content class="md-padding" cg-busy="$ctrl.relatorioPromise">
+        <div layout="column">
             <md-input-container class="md-block">
                 <label>Data</label>
                 <md-datepicker name="data" required type="date" ng-model="$ctrl.data">
@@ -23,6 +23,6 @@
                 </div>
             </md-input-container>
             <md-button class="md-raised md-primary" type="submit">Gerar relatório</md-button>
-        </md-content>
-    </div>
+        </div>
+    </md-content>
 </form>

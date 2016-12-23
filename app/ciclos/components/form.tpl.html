@@ -4,8 +4,8 @@
         <h2 class="md-toolbar-tools">Iniciar ciclo</h2>
         <md-button type="submit">Salvar</md-button>
     </md-toolbar>
-    <div layout="column" flex layout-padding>
-        <md-content layout="column">
+    <md-content class="md-padding">
+        <div layout="column">
             <md-input-container class="md-block">
                 <label>Data inicio</label>
                 <md-datepicker name="data_inicio" required type="date" ng-model="$ctrl.ciclo.data_inicio">
@@ -40,6 +40,6 @@
                     <div ng-message="required">Campo obrigatório</div>
                 </div>
             </md-input-container>
-        </md-content>
-    </div>
+        </div>
+    </md-content>
 </form>

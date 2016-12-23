@@ -6,8 +6,8 @@
         </h2>
         <md-button type="submit">Salvar</md-button>
     </md-toolbar>
-    <div layout="column" flex layout-padding>
-        <md-content layout="column">
+    <md-content class="md-padding">
+        <div layout="column">
             <md-input-container class="md-block">
                 <label>Numero</label>
                 <input name="numero" ng-model="$ctrl.quadra.numero" required type="text">
@@ -33,6 +33,6 @@
                 </md-autocomplete>
             </div>
             <md-button ng-click="$ctrl.adicionarLado()">Adicionar lado</md-button>
-        </md-content>
-    </div>
+        </div>
+    </md-content>
 </form>

@@ -6,8 +6,8 @@
         </h2>
         <md-button type="submit">Salvar</md-button>
     </md-toolbar>
-    <div layout="column" flex layout-padding>
-        <md-content layout="column">
+    <md-content class="md-padding">
+        <div layout="column">
             <md-input-container class="md-block">
                 <label>Ordem</label>
                 <input name="ordem" type="number" step="1" ng-model="$ctrl.imovel.ordem">
@@ -57,6 +57,6 @@
                     Ponto estratégico
                 </md-checkbox>
             </md-input-container>
-        </md-content>
-    </div>
+        </div>
+    </md-content>
 </form>
