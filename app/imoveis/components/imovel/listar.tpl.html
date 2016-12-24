@@ -16,9 +16,13 @@
         <md-button ui-sref="imovel.adicionar({lado:$ctrl.lado})">Adicionar</md-button>
     </div>
 </md-toolbar>
-<md-content flex class="md-padding" cg-busy="[$ctrl.ladosPromise,$ctrl.imoveisPromise]">
+<md-content layout-fill flex class="md-padding" cg-busy="[$ctrl.ladosPromise,$ctrl.imoveisPromise]">
+    <div layout-fill layout="column" layout-align="center center" ng-hide="$ctrl.imoveis.length">
+        <img src="assets/nenhum-imovel.png"/>
+        <div>Nenhum imóvel cadastrado</div>
+    </div>
     <div layout-xs="column" layout="row" layout-wrap>
-        <div flex="33" flex-xs="100" ng-repeat="imovel in $ctrl.imoveis">
+        <div flex="33" flex-sm="50" flex-xs="100" ng-repeat="imovel in $ctrl.imoveis">
             <md-card>
                 <md-card-content>
                     <div layout="row" layout-align="space-between center">
