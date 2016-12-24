@@ -2,56 +2,58 @@
     <fw-menu-button target="left"></fw-menu-button>
     <h2 class="md-toolbar-tools">Detalhes do ciclo</h2>
     <md-button ng-hide="$ctrl.ciclo.fechado_em" ng-click="$ctrl.encerrar($event)">Encerrar</md-button>
-    <md-button ng-show="$ctrl.ciclo.fechado_em" ui-sref="ciclo.iniciar">Iniciar novo</md-button>
+    <md-button ng-show="$ctrl.ciclo.fechado_em" ui-sref="ciclo.iniciar">Iniciar</md-button>
 </md-toolbar>
 <md-content flex class="md-padding">
-	<div layout-xs="column" layout="row" layout-wrap>
-		<div flex="50" flex-xs="100">
-			<md-card>
-                <md-card-title>
-                     <md-card-title-text>
-                        <span class="md-headline">Ciclo <span ng-bind="$ctrl.ciclo"></span></span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <div layout="row" layout-align="space-between center">
-                        <div>Data início</div>
-                        <div class="md-secondary">{{ $ctrl.ciclo.data_inicio|date }}</div>
+    <div layout="column">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Ciclo <span ng-bind="$ctrl.ciclo"></span></span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-progress-linear md-mode="determinate" value="{{ $ctrl.progresso || 0 }}"></md-progress-linear>
+            <md-list layout="row" layout-wrap>
+                <md-list-item class="md-2-line" flex="33" flex-sm="100" flex-xs="100">
+                    <div class="md-list-item-text">
+                        <p>Atividade</p>
+                        <h3>{{ $ctrl.ciclo.atividade_label }}</h3>
                     </div>
-                    <div layout="row" layout-align="space-between center">
-                        <div>Data termino</div>
-                        <div class="md-secondary">{{ $ctrl.ciclo.data_fim|date }} </div>
+                </md-list-item>
+                <md-list-item class="md-2-line" flex="33" flex-sm="50" flex-xs="100">
+                    <div class="md-list-item-text">
+                        <p>Data início</p>
+                        <h3>{{ $ctrl.ciclo.data_inicio|date }}</h3>
                     </div>
-                    <div layout="row" layout-align="space-between center">
-                        <div>Atividade</div>
-                        <div class="md-secondary">{{ $ctrl.ciclo.atividade_label }} </div>
+                </md-list-item>
+                <md-list-item class="md-2-line" flex="33" flex-sm="50" flex-xs="100">
+                    <div class="md-list-item-text">
+                        <p>Data Termino</p>
+                        <h3>{{ $ctrl.ciclo.data_fim|date }}</h3>
                     </div>
-                    <div layout="row" layout-align="space-between center" ng-show="$ctrl.ciclo.fechado_em">
-                        <div>Fechado em</div>
-                        <div class="md-secondary">{{ $ctrl.ciclo.fechado_em|date }} </div>
-                    </div>
-                </md-card-content>
-            </md-card>
-        </div>
-        <div flex="50" flex-xs="100">
-			<md-card>
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">Agentes</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <div>
-                    <md-list class="md-dense" cg-busy="$ctrl.promiseTrabalhos">
-                        <md-list-item class="secondary-button-padding" ng-repeat="trabalho in $ctrl.trabalhos">
+                </md-list-item>
+            </md-list>
+        </md-card>
+		<md-card>
+            <md-card-title layout="column" layout-gt-xs="row">
+                <md-card-title-text layout-="row" layout-align="center start">
+                    <span class="md-headline">Agentes</span>
+                </md-card-title-text>
+                <md-button class="md-raised md-primary" ui-sref="ciclo.selecionar-agente">Distribuir quadras</md-button>
+            </md-card-title>
+            <div>
+                <md-list class="md-dense" layout="row" layout-wrap cg-busy="$ctrl.promiseTrabalhos">
+                    <md-list-item class="secondary-button-padding" ng-repeat="trabalho in $ctrl.trabalhos" flex="33" flex-md="50" flex-sm="50" flex-xs="100">
+                        <div class="md-list-item-text">
                             {{ trabalho.agente.nome }}
-                            <span class="md-secondary">{{ trabalho.total_visitas || 0 }}/{{ trabalho.total_imoveis || 0 }}</span>
-                        </md-list-item>
-                    </md-list>
-                </div>
-                <md-card-actions layout="row" layout-align="end center">
-                    <md-button ui-sref="ciclo.selecionar-agente">Distribuir quadras</md-button>
-                </md-card-actions>
-            </md-card>
-		</div>
+                        </div>
+                        <div class="md-secondary">{{ trabalho.total_visitas || 0 }}/{{ trabalho.total_imoveis || 0 }}</div>
+                        <md-divider>
+                            <md-progress-linear md-mode="determinate" value="{{ trabalho.progresso || 0 }}"></md-progress-linear>
+                        </md-divider>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </md-card>
 	</div>
 </md-content>

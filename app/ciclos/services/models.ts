@@ -76,15 +76,24 @@ export const VisitaModel = ["Parse", Parse => {
 
 export const TrabalhoModel = ["Parse", "QuadraModel", (Parse, QuadraModel) => {
     class Trabalho extends Parse.Object {
+        public total_visitas
+        public total_imoveis
+
         private _quadras
+
         constructor() {
             super("Trabalho")
         }
+
         get quadras() {
             if(!this._quadras) {
                 this._quadras = this.relation("quadras")
             }
             return this._quadras
+        }
+
+        get progresso() {
+            return this.total_visitas / this.total_imoveis * 100
         }
     }
     Parse.defineAttributes(Trabalho, [
