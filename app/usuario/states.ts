@@ -9,6 +9,7 @@ export const UsuarioListarState = {
     parent: "main",
     name: "usuario.listar",
     url: "/usuario/listar",
+    permission: "supervisor",
     template: '<cp-usuario-listar layout-fill layout="column"/>',
 }
 
@@ -16,6 +17,7 @@ export const UsuarioAdicionarState = {
     parent: "main",
     name: "usuario.adicionar",
     url: "/usuario/adicionar",
+    permission: "supervisor",
     template: '<cp-usuario-form layout-fill layout="column" usuario="$resolve.usuario"/>',
     resolve: {
         usuario: (UsuarioModel) => {
@@ -28,6 +30,7 @@ export const UsuarioEditarState = {
     parent: "main",
     name: "usuario.editar",
     url: "/usuario/editar/:usuarioId",
+    permission: "supervisor",
     params: {usuario: null},
     template: '<cp-usuario-form layout-fill layout="column" usuario="$resolve.usuario"/>',
     resolve: {

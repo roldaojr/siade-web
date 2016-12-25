@@ -11,7 +11,10 @@ export const UsuarioModel = ["Parse", Parse => {
     Parse.defineAttributes(Agente, [
         "nome", "tipo"
     ])
-    return Agente;
+    Agente.prototype.isSupervisor = () => {
+        return this.tipo == Agente.Tipos.SUPERVISOR
+    }
+    return Agente
 }];
 
 export class UsuarioDao extends GenericDao {

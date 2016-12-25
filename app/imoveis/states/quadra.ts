@@ -27,6 +27,7 @@ export const QuadraAdicionarState = {
     parent: 'main',
     name: "quadra.adicionar",
     url: "/quadra/adicionar/:bairroId",
+    permission: "supervisor",
     template: '<cp-quadra-form layout-fill layout="column" quadra="$resolve.quadra"/>',
     params: {lado: null},
     resolve: {

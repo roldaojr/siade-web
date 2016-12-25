@@ -9,6 +9,7 @@ export const RelatorioDiarioState = {
     parent: "main",
     name: "relatorio.diario",
     url: "/relatorio/diario",
+    permission: "supervisor",
     template: '<cp-relatorio-diario layout-fill layout="column" agentes="$resolve.agentes"/>',
     resolve: {
         agentes: (UsuarioDao) => {
@@ -21,6 +22,7 @@ export const RelatorioSemanalState = {
     parent: "main",
     name: "relatorio.semanal",
     url: "/relatorio/semanal",
+    permission: "supervisor",
     template: '<cp-relatorio-semanal layout-fill layout="column" agentes="$resolve.agentes"/>',
     resolve: {
         agentes: (UsuarioDao) => {

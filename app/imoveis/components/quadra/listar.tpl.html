@@ -42,7 +42,7 @@
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button ui-sref="imovel.listar({quadraId: quadra.id})" ng-disabled="!quadra.total_lados">Imóveis</md-button>
                     <md-button ui-sref="quadra.editar({quadraId: quadra.id})">Editar</md-button>
-                    <md-button ng-click="$ctrl.excluirQuadra($event, quadra)">Excluir</md-button>
+                    <md-button ng-click="$ctrl.excluirQuadra($event, quadra)" ng-show="$root.currentUser.isSupervisor()">Excluir</md-button>
                 </md-card-actions>
             </md-card>
         </div>

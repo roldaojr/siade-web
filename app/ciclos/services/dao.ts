@@ -74,4 +74,18 @@ export class TrabalhoDao extends GenericDao {
     public buscarPeloCiclo(ciclo) {
         return this.getQuery().include("agente").equalTo("ciclo", ciclo).find()
     }
+
+    public buscarQuadrasPeloAgenteECiclo(agente, ciclo) {
+        return this.getQuery().equalTo("ciclo", ciclo).equalTo("agente", agente).find()
+            .then(trabalhos => {
+                return trabalhos[0].relation("quadras").query().include("bairro").find()
+            })
+    }
+
+    public buscarQuadrasPeloAgente(agente) {
+        return this.CicloDao.buscarAtual().then(c => {
+            return this.buscarQuadrasPeloAgenteECiclo(agente, c)
+        })
+    }
+
 }

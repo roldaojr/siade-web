@@ -1,22 +1,48 @@
 
 class QuadraListarCtrl {
-    static $inject = ["$state", "$mdDialog", "QuadraDao", "BairroDao"]
+    static $inject = ["$rootScope", "$state", "$mdDialog",
+                      "QuadraDao", "BairroDao", "TrabalhoDao"]
     public quadras
     public bairros
     public bairro
     public bairrosPromise
     public quadrasPromise
+    private _bairros
 
-    constructor(protected $state, protected $mdDialog,
-                protected QuadraDao, protected BairroDao) {
-        this.bairrosPromise = BairroDao.buscarTodos()
-                                       .then(r => {this.bairros = r})
-        this.buscarQuadras()
+    constructor(protected $rootScope, protected $state, protected $mdDialog,
+                protected QuadraDao, protected BairroDao, protected TrabalhoDao) {
+        this.buscarBairros()
+    }
+
+    buscarBairros() {
+        if(this.$rootScope.currentUser.isSupervisor()) {
+            this.bairrosPromise = this.BairroDao.buscarTodos()
+                                                .then(r => {this.bairros = r})
+        } else {
+            this.bairrosPromise = this.TrabalhoDao.buscarQuadrasPeloAgente(
+                this.$rootScope.currentUser).then(quadras => {
+                    let bairros = {}
+                    quadras.forEach(quadra => {
+                        let bairro = quadra.bairro
+                        if(bairros[bairro.id] == undefined) {
+                            bairro.quadras = []
+                            bairros[bairro.id] = bairro
+                        }
+                        bairros[bairro.id].quadras.push(quadra)
+                    })
+                    this._bairros = bairros
+                    this.bairros = Object.values(bairros)
+                })
+        }
     }
 
     buscarQuadras() {
-        this.quadrasPromise = this.QuadraDao.buscarPeloBairro(this.bairro)
-                                            .then(r => this.quadras = r)
+        if(this.$rootScope.currentUser.isSupervisor()) {
+            this.quadrasPromise = this.QuadraDao.buscarPeloBairro(this.bairro)
+                                                .then(r => this.quadras = r)
+        } else {
+            this.quadras = this._bairros[this.bairro.id].quadras
+        }
     }
 
     mudarBairro() {

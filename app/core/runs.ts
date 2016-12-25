@@ -19,13 +19,21 @@ export const debugRouterRunBlock = ["$rootScope", $rootScope => {
     })
 }]
 
-export const authHookRunBlock = ["$rootScope", "$state", "Parse", ($rootScope, $state, Parse) => {
+export const authHookRunBlock = ["$rootScope", "$state", "$mdToast", "Parse", "UsuarioModel",
+                                ($rootScope, $state, $mdToast, Parse, Usuario) => {
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-        if(toState.name === "login" || toState.name === "logout" || toState.name === "signup") return
-        let currentUser = Parse.User.current()
+        if(["login", "logout", "signup"].indexOf(toState.name) > -1) return
+        // verificar se o usuário está logado
+        let currentUser = Usuario.current()
+        $rootScope.currentUser = currentUser
         if (!(currentUser && currentUser.authenticated())) {
             event.preventDefault()
             $state.go("login", {}, {location:"replace"})
+        }
+        // verificar se o usuário possui permissão
+        if(toState.permission == "supervisor" && !currentUser.isSupervisor()) {
+            event.preventDefault()
+            $mdToast.showSimple("Acesso negado")
         }
     })
 }]

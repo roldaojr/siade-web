@@ -10,21 +10,21 @@
                     <md-sidemenu-button ui-sref="logout">Sair</md-sidemenu-button>
                 </md-sidemenu-content>
                 <md-divider></md-divider>
-                <md-sidemenu-content md-heading="Gerenciamento de Ciclo" md-arrow="true">
+                <md-sidemenu-content md-heading="Gerenciamento de Ciclo" md-arrow="true" ng-show="$ctrl.currentUser.isSupervisor()">
                     <md-sidemenu-button ui-sref="ciclo.detalhes">Ciclo atual</md-sidemenu-button>
                     <md-sidemenu-button ui-sref="ciclo.anteriores">Ciclos anteriores</md-sidemenu-button>
                 </md-sidemenu-content>
                 <md-sidemenu-content md-heading="Imóveis e Localidades" md-arrow="true">
                     <md-sidemenu-button ui-sref="quadra.listar">Quadras e Imóveis</md-sidemenu-button>
                     <md-sidemenu-button ui-sref="logradouro.listar">Logradouros</md-sidemenu-button>
-                    <md-sidemenu-button ui-sref="bairro.listar">Bairros</md-sidemenu-button>
+                    <md-sidemenu-button ui-sref="bairro.listar" ng-show="$ctrl.currentUser.isSupervisor()">Bairros</md-sidemenu-button>
                 </md-sidemenu-content>
-                <md-sidemenu-content md-heading="Relatórios" md-arrow="true">
+                <md-sidemenu-content md-heading="Relatórios" md-arrow="true" ng-show="$ctrl.currentUser.isSupervisor()">
                     <md-sidemenu-button ui-sref="relatorio.diario">Diário</md-sidemenu-button>
                     <md-sidemenu-button ui-sref="relatorio.semanal">Semanal</md-sidemenu-button>
-                    <md-sidemenu-button ui-sref="qrcode">Gerar QRCode</md-sidemenu-button>
                 </md-sidemenu-content>
-                <md-sidemenu-button ui-sref="usuario.listar">Agentes</md-sidemenu-button>
+                <md-sidemenu-button ui-sref="qrcode">Gerar QRCode</md-sidemenu-button>
+                <md-sidemenu-button ui-sref="usuario.listar" ng-show="$ctrl.currentUser.isSupervisor()">Agentes</md-sidemenu-button>
             </md-sidemenu>
         </md-content>
     </md-sidenav>
